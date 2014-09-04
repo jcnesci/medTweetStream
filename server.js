@@ -11,6 +11,8 @@ var logger		 = require('morgan');
 var Twit 			 = require('twit');
 var io				 = require('socket.io').listen(server);
 
+var theFilter    = require('./app/filter');
+
 // configure app
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -33,7 +35,7 @@ io.on('connection', function (socket) {
   console.log('A new user connected!');
 
 	var twitterQuery_1 = "BarackObama";
-	var stream_phrase = "football";
+	var stream_phrase = "innovation";
 
 	console.log("Using Alex's keys");
 	 //Alex's keys
@@ -58,20 +60,13 @@ io.on('connection', function (socket) {
 	});
 
 	// --- STREAM OFF FOR NOW ---
-  // // Everytime there's a new tweet, emit a event passing the tweet.
-  // var stream = T.stream('statuses/filter', { track: stream_phrase });
-  // stream.on('tweet', function (tweet) {
-  //   socket.emit('twitter_stream', tweet);
-  // });
+  // Everytime there's a new tweet, emit a event passing the tweet.
+  var stream = T.stream('statuses/filter', { follow: 'Akamai' });
+  stream.on('tweet', function (tweet) {
+    socket.emit('twitter_stream', tweet);
+  });
 
 });
-
-// --- STREAM OFF FOR NOW ---
-// // Everytime there's a new tweet, emit a event passing the tweet.
-// var stream = T.stream('statuses/filter', { track: stream_phrase });
-// stream.on('tweet', function (tweet) {
-//   socket.emit('twitter_stream', tweet);
-// });
 
 // START THE SERVER
 // =============================================================================

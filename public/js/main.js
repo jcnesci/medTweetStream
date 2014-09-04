@@ -23,6 +23,20 @@ $(function(){
 
 	});
 
+	// On "twitter" event, append the tweet's text to the ul.
+	socket.on('twitter_stream', function (data) {
+
+	    
+	    // Show only the last 5 tweets from stream.
+	    if ($('ul.tweet_list').children().length >= 5) {
+	    	$('ul.tweet_list li').first().remove();
+	    	console.log("delete!");
+	    }
+    	$('ul.tweet_list').append('<li>'+ data.text +'</li>');
+
+    	//$('ul.tweet_list').textillate();
+	});
+
 });
 
 // Print data from Twitter JS object into an html element.
