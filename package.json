@@ -1,0 +1,28 @@
+{
+  "name": "biomed-node-api",
+  "version": "0.0.0",
+  "description": "Twitter Parsing and Restful Api",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sosolimited/biomed-node"
+  },
+  "keywords": [
+    "biomed"
+  ],
+  "author": "sosolimited",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sosolimited/biomed-node/issues"
+  },
+  "homepage": "https://github.com/sosolimited/biomed-node",
+  "dependencies": {
+    "body-parser": "^1.7.0",
+    "express": "^4.8.7",
+    "mongoose": "^3.8.15",
+    "morgan": "^1.3.0"
+  }
+}
