@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 
 var port     = process.env.PORT || 8080; // set our port
 
-var apiRouting    = require('./routes/api');
+var apiRouting    = require('./app/routes/api');
 
 app.use(logger());
 app.use(express.static(__dirname + '/public'));
@@ -35,15 +35,15 @@ io.on('connection', function (socket) {
   console.log('A new user connected!');
 
 	var twitterQuery_1 = "BarackObama";
-	var stream_phrase = "innovation";
+	var stream_phrase = "football";
 
-	console.log("Using Alex's keys");
-	 //Alex's keys
+	console.log("Using Soso's keys");
+	 //Soso's keys
 	 var T = new Twit({
-	     consumer_key: 'P8EYI0gloJoDTOu8596QcUn1c'
-	   , consumer_secret: 'Ya8PmkQxm7FLdQ6coftOi65hSedUNevFVil0kApw45YEI22mMd'
-	   , access_token: '234878749-OlktDQaRgvr6hkBoQ4kI94y7sxI1EfpOlH17rwTG'
-	   , access_token_secret: 'nKpgBcCd20RFXeASCLwACtA80PnEmvBJ6kJcaeA4oSO4a'
+	     consumer_key: 'VcbBCP1R4gIdm6ATuxov2Fwry'
+	   , consumer_secret: '41HftuMjsy76LE9CYVoyeTl1VZXtXjqNWlQ4pupanSYSH8IF4P'
+	   , access_token: '48737760-qMEip7MXDoTBKriFTdB9qOPhqH5Ty7iPAnl2ph1c2'
+	   , access_token_secret: 'eFy6yZ86b5aT4fpkXzwIWB94GJwiCffL4chJe8WDDyA93'
 	});
 
 
@@ -61,7 +61,7 @@ io.on('connection', function (socket) {
 
 	// --- STREAM OFF FOR NOW ---
   // Everytime there's a new tweet, emit a event passing the tweet.
-  var stream = T.stream('statuses/filter', { follow: 'Akamai' });
+  var stream = T.stream('statuses/filter', { track: stream_phrase });
   stream.on('tweet', function (tweet) {
     socket.emit('twitter_stream', tweet);
   });
