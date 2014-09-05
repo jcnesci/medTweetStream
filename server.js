@@ -23,9 +23,6 @@ var apiRouting    = require('./app/routes/api');
 
 app.use(logger());
 app.use(express.static(__dirname + '/public'));
-app.use(function(req, res){
-  res.send('Hello');
-});
 
 // REGISTER OUR ROUTES -------------------------------
 app.use('/api', apiRouting);

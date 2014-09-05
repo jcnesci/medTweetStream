@@ -1,7 +1,7 @@
 var express    = require('express');
 
 var mongoose   = require('mongoose');
-mongoose.connect('mongodb://localhost/test'); // connect to our database
+mongoose.connect('mongodb://localhost/biomed'); // connect to our database
 var Tweet     = require('../models/tweet');
 
 // ROUTES FOR OUR API
